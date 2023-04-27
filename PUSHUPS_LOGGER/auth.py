@@ -9,10 +9,10 @@ def signup():
 
 
 @auth.route("/signin")
-def signup():
+def signin():
     return "signin page"
 
 
 @auth.route("/signout")
-def signup():
+def signout():
     return "signout successfully"

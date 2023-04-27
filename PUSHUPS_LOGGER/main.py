@@ -4,10 +4,10 @@ main = Blueprint("main", __name__)
 
 
 @main.route("/")
-def indezx():
+def index():
     return "Home Page"
 
 
 @main.route("/profile")
-def index():
+def profile():
     return "Profile Page"
