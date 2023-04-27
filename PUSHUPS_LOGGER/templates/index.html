@@ -2,3 +2,13 @@
 <link rel="stylesheet" , href="{{ url_for('static', filename='css/extended_beauty.css') }}" />
 
 {% endblock %}
+{% block content %}
+<br>
+<h1>Hey There!</h1>
+<center>
+    <img src="{{ url_for('static', filename='images/pushup.png')}}" alt="pushup img" height="250px" />
+</center>
+<p>Welcome to your pushup logger </br>This website implements basic CRUD operation functionalities and user
+    authentication features using FLASK</p>
+
+{% endblock %}
