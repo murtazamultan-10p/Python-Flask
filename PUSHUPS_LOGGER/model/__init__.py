@@ -1,1 +1,2 @@
-from . import user, workout
+from .user import User
+from .workout import Workout

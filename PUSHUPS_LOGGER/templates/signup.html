@@ -4,6 +4,24 @@
 <div class="col-md-4 col-md-offset-4">
     <form method="POST" action="/signup">
         <h2>Sign Up</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flash-message">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <script>
+            setTimeout(function () {
+                var messages = document.querySelectorAll('.flash-message');
+                messages.forEach(function (message) {
+                    message.remove();
+                });
+            }, 5000);
+        </script>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter full name" />
