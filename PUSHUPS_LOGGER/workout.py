@@ -9,9 +9,10 @@ workout = Blueprint("workout", __name__)
 @workout.route("/all")
 @login_required
 def all_workouts():
+    page = request.args.get("page", 1, type=int)
     user = User.query.get_or_404(current_user.user_id)
-    print(user.workouts)
-    return render_template("all_workouts.html", workouts=user.workouts)
+    workouts = Workout.query.filter_by(author=user).paginate(page=page, per_page=5)
+    return render_template("all_workouts.html", workouts=workouts)
 
 
 @workout.route("/new")
