@@ -7,3 +7,6 @@ class User(sql_db.Model, UserMixin):
     name = sql_db.Column(sql_db.String(100))
     password = sql_db.Column(sql_db.String(100))
     workouts = sql_db.relationship('Workout', backref='author', lazy=True)
+
+    def get_id(self):
+        return self.user_id

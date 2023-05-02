@@ -2,8 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-from .model import User
-
 sql_db = SQLAlchemy()
 
 def create_app():
@@ -17,6 +15,7 @@ def create_app():
     login_manager.login_view = 'auth.signin'
     login_manager.init_app(app)
 
+    from .model import User
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_required, login_user, logout_user
 from .model import User
 from . import sql_db
 
@@ -32,16 +33,21 @@ def signin():
 
 @auth.route("/signin", methods=["POST"])
 def signin_post():
-    email, password = list(request.form.values())
+    email = request.form.get("email")
+    password = request.form.get("password")
+    remember = request.form.get("remember", False)
     user = User.query.filter_by(email=email).first()
 
     if not user or not check_password_hash(user.password, password):
         flash("Invalid email or password")
         return redirect(url_for("auth.signin"))
-
+    
+    login_user(user, remember=remember)
     flash("Login successful")
     return redirect(url_for("main.profile"))
 
 @auth.route("/signout")
+@login_required
 def signout():
+    logout_user()
     return flash("signout successfully")
