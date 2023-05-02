@@ -43,11 +43,12 @@ def signin_post():
         return redirect(url_for("auth.signin"))
     
     login_user(user, remember=remember)
-    flash("Login successful")
     return redirect(url_for("main.profile"))
 
 @auth.route("/signout")
 @login_required
 def signout():
     logout_user()
-    return flash("signout successfully")
+    flash("signout successfully")
+    return redirect(url_for("main.index"))
+    

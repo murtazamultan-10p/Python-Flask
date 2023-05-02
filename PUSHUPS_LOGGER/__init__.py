@@ -26,6 +26,9 @@ def create_app():
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 
+    from .workout import workout as workout_blueprint
+    app.register_blueprint(workout_blueprint)
+
     return app
 
 def create_db_model():

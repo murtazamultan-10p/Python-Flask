@@ -6,11 +6,7 @@
         <h2>Sign In</h2>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul class="flash-message">
-            {% for message in messages %}
-            {{ message }}
-            {% endfor %}
-        </ul>
+        <ul class="flash-message">{{ messages[0] }}</ul>
         {% endif %}
         {% endwith %}
 
